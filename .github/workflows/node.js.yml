@@ -20,5 +20,5 @@ jobs:
       run: date
     - name: Muestra el contenido del directorio
       run: ls -la
-    - name: Muestra el contenido del directorio
-      run: ls -la
+    - name: Muestra la versión de node
+      run: node -v
