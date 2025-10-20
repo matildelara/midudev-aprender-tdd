@@ -15,10 +15,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
-    - name: 'Hello World'
-      run: echo "Hello World"
-    - name: Dime la fecha
-      run: date
-    - name: Muestra el contenido del directorio
-      run: ls -la
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 24
+        cache: 'npm'
+    - run: npm ci --legacy-peer-deps
+    - run: npm run build
 
