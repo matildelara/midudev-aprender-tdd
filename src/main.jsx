@@ -1,4 +1,5 @@
-import { createRoot } from "react-dom/client";
-import { Calculator } from "./Calculator";
+import { canReconfigure } from "./can-reconfigure.js";
+import { Calculator } from "./Calculator.jsx";
+
 
 createRoot(document.getElementById("root")).render(<Calculator />);
