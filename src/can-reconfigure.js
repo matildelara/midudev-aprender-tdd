@@ -1,22 +1,23 @@
 export const canReconfigure = (from, to) => {
   if (typeof from !== "string") throw new Error("from must be a string");
   if (typeof to !== "string") throw new Error("to must be a string");
-  if (from.length !== to.length) return false;
 
-  const map = {};
-  const used = new Set();
+  const isSameLength = from.length === to.length;
+  if (!isSameLength) return false;
+
+  const hasSameUniqueLetters = new Set(from).size === new Set(to).size;
+  if (!hasSameUniqueLetters) return false;
+
+  const transformations = {};
 
   for (let i = 0; i < from.length; i++) {
-    const f = from[i];
-    const t = to[i];
+    const fromLetter = from[i];
+    const toLetter = to[i];
 
-    if (map[f]) {
-      if (map[f] !== t) return false; // conflicto en mapeo
-    } else {
-      if (used.has(t)) return false; // otra letra ya mapeada aquí
-      map[f] = t;
-      used.add(t);
-    }
+    const storeLetter = transformations[fromLetter];
+    if (storeLetter && storeLetter !== toLetter) return false;
+
+    transformations[fromLetter] = toLetter;
   }
 
   return true;
