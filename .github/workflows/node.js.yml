@@ -20,3 +20,5 @@ jobs:
       run: date
     - name: Muestra el contenido del directorio
       run: ls -la
+    - name: Muestra el contenido del directorio
+      run: ls -la
